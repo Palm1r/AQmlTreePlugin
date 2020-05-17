@@ -11,14 +11,14 @@ int main(int argc, char *argv[]) {
 
   auto treeModel = new TreeModel();
   auto root = treeModel->rootItem().get();
-  auto parent1 = new TreeItem({"Parent1"});
-  auto parent2 = new TreeItem({"Parent2"});
-  auto child1 = new TreeItem({"Child1"});
-  auto child2 = new TreeItem({"Child2"});
-  auto child3 = new TreeItem({"Child3"});
-  auto grandChild1 = new TreeItem({"GrandChild1"});
-  auto grandChild2 = new TreeItem({"GrandChild2"});
-  auto grateChild1 = new TreeItem({"GreateChild1"});
+  auto parent1 = new TreeItem("Parent1");
+  auto parent2 = new TreeItem("Parent2");
+  auto child1 = new TreeItem("Child1");
+  auto child2 = new TreeItem("Child2");
+  auto child3 = new TreeItem("Child3");
+  auto grandChild1 = new TreeItem("GrandChild1");
+  auto grandChild2 = new TreeItem("GrandChild2");
+  auto grateChild1 = new TreeItem("GreateChild1");
 
   treeModel->addTreeItem(root, parent1);
   treeModel->addTreeItem(root, parent2);

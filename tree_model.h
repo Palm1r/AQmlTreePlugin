@@ -8,8 +8,6 @@
 class TreeModel : public QAbstractItemModel {
   Q_OBJECT
  public:
-  enum Role { NameRole = Qt::UserRole + 1, DataRole };
-
   explicit TreeModel(QObject *parent = nullptr);
 
   int rowCount(const QModelIndex &index) const override;
@@ -17,10 +15,7 @@ class TreeModel : public QAbstractItemModel {
   QModelIndex index(const int row, const int column,
                     const QModelIndex &parent) const override;
   QModelIndex parent(const QModelIndex &childIndex) const override;
-  QVariant data(const QModelIndex &index, const int role) const override;
-  Qt::ItemFlags flags(const QModelIndex &index) const override;
-
-  QHash<int, QByteArray> roleNames() const override;
+  QVariant data(const QModelIndex &index, const int role = 0) const override;
 
   void addTreeItem(TreeItem *parent, TreeItem *child);
 

@@ -1,6 +1,6 @@
 #include "tree_item.h"
 
-TreeItem::TreeItem(const QList<QVariant> &data, TreeItem *parent)
+TreeItem::TreeItem(const QVariant &data, TreeItem *parent)
     : _itemData(data), _parentItem(parent) {}
 
 TreeItem::~TreeItem() { qDeleteAll(_childItems); }
@@ -13,13 +13,7 @@ TreeItem *TreeItem::child(int row) { return _childItems.value(row); }
 
 int TreeItem::childCount() const { return _childItems.count(); }
 
-int TreeItem::columnCount() const { return _childItems.count(); }
-
-QVariant TreeItem::data(int column) const { return _itemData.value(column); }
-
-void TreeItem::setData(int column, QVariant value) {
-  _itemData[column] = value;
-}
+QVariant TreeItem::data() const { return _itemData; }
 
 int TreeItem::row() const {
   if (_parentItem)

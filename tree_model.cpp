@@ -1,13 +1,7 @@
 #include "tree_model.h"
 
-#include <QDebug>
-
-constexpr int COLUMNS = 1;
-
 TreeModel::TreeModel(QObject *parent) : QAbstractItemModel(parent) {
-  QVariantList rootData;
-  rootData << roleNames()[NameRole] << roleNames()[DataRole];
-  _rootItem = std::make_shared<TreeItem>(rootData);
+  _rootItem = std::make_shared<TreeItem>(QVariantList{});
 }
 
 int TreeModel::rowCount(const QModelIndex &parent) const {
@@ -15,9 +9,8 @@ int TreeModel::rowCount(const QModelIndex &parent) const {
   TreeItem *p = static_cast<TreeItem *>(parent.internalPointer());
   return p->childCount();
 }
-int TreeModel::columnCount(const QModelIndex & /*parent*/) const {
-  return COLUMNS;
-}
+
+int TreeModel::columnCount(const QModelIndex & /*parent*/) const { return 1; }
 
 QModelIndex TreeModel::index(const int row, const int column,
                              const QModelIndex &parent) const {
@@ -48,20 +41,7 @@ QVariant TreeModel::data(const QModelIndex &index, const int role) const {
     return QVariant();
   }
   TreeItem *item = static_cast<TreeItem *>(index.internalPointer());
-  return item->data(role);
-}
-
-Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const {
-  if (!index.isValid()) return nullptr;
-
-  return QAbstractItemModel::flags(index);
-}
-
-QHash<int, QByteArray> TreeModel::roleNames() const {
-  QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
-  roles[NameRole] = "itemName";
-  roles[DataRole] = "itemData";
-  return roles;
+  return item->data();
 }
 
 void TreeModel::addTreeItem(TreeItem *parent, TreeItem *child) {
