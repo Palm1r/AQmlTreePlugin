@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
   auto child3 = new TreeItem({"child3"});
   auto grandChild1 = new TreeItem({"grandChild1"});
   auto grandChild2 = new TreeItem({"grandChild2"});
+  auto grateChild1 = new TreeItem({"grateChild1"});
 
   treeModel->addTreeItem(root, parent1);
   treeModel->addTreeItem(root, parent2);
@@ -26,6 +27,7 @@ int main(int argc, char *argv[]) {
   treeModel->addTreeItem(parent1, child3);
   treeModel->addTreeItem(child1, grandChild1);
   treeModel->addTreeItem(child1, grandChild2);
+  treeModel->addTreeItem(grandChild1, grateChild1);
 
   QQmlApplicationEngine engine;
   engine.rootContext()->setContextProperty("_treemodel", treeModel);
