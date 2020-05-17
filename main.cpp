@@ -13,6 +13,11 @@ int main(int argc, char *argv[]) {
   auto root = treeModel->rootItem().get();
   auto parent1 = new TreeItem("Parent1");
   auto parent2 = new TreeItem("Parent2");
+  auto parent3 = new TreeItem("Parent3");
+  auto parent4 = new TreeItem("Parent4");
+  auto parent5 = new TreeItem("Parent5");
+  auto parent6 = new TreeItem("Parent6");
+
   auto child1 = new TreeItem("Child1");
   auto child2 = new TreeItem("Child2");
   auto child3 = new TreeItem("Child3");
@@ -22,6 +27,11 @@ int main(int argc, char *argv[]) {
 
   treeModel->addTreeItem(root, parent1);
   treeModel->addTreeItem(root, parent2);
+  treeModel->addTreeItem(root, parent3);
+  treeModel->addTreeItem(root, parent4);
+  treeModel->addTreeItem(root, parent5);
+  treeModel->addTreeItem(root, parent6);
+
   treeModel->addTreeItem(parent1, child1);
   treeModel->addTreeItem(parent1, child2);
   treeModel->addTreeItem(parent1, child3);

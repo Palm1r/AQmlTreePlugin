@@ -62,18 +62,8 @@ Item {
                         }
                     }
 
-                    Rectangle {
-                        anchors.verticalCenter: parent.verticalCenter
-                        width: 20
-                        height: 20
-                        color: "#3c85b5"
-                    }
-
-                    Text {
-                        anchors.verticalCenter: parent.verticalCenter
-                        text:  _d.currentData
-                        color: "#3c85b5"
-                        font.pixelSize: 20
+                    ModelItem {
+                        content: _d.currentData
                     }
 
                 }
@@ -94,7 +84,7 @@ Item {
                     width: parent.width
 
                     visible: _d.isOpen
-                    source: "TreeView.qml"
+                    source: "TreeItem.qml"
                     onLoaded: {
                         item.parentIndex = _d.currentIndex
                         item.childCount = _d.itemChildCount
