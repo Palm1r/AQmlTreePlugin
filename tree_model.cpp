@@ -84,3 +84,5 @@ void TreeModel::addTreeItem(TreeItem *parent, TreeItem *child) {
 }
 
 std::shared_ptr<TreeItem> TreeModel::rootItem() const { return _rootItem; }
+
+QModelIndex TreeModel::rootIndex() { return QModelIndex(); }

@@ -19,6 +19,7 @@ Item {
 
             delegate: Column {
                 spacing: 5
+                leftPadding: 10
 
                 Rectangle {
                     QtObject {

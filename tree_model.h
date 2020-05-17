@@ -26,6 +26,8 @@ class TreeModel : public QAbstractItemModel {
 
   std::shared_ptr<TreeItem> rootItem() const;
 
+  Q_INVOKABLE QModelIndex rootIndex();
+
  private:
   std::shared_ptr<TreeItem> _rootItem;
 };
