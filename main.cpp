@@ -15,11 +15,17 @@ int main(int argc, char *argv[]) {
   auto parent2 = new TreeItem({"parent2"});
   auto child1 = new TreeItem({"child1"});
   auto child2 = new TreeItem({"child2"});
+  auto child3 = new TreeItem({"child3"});
+  auto grandChild1 = new TreeItem({"grandChild1"});
+  auto grandChild2 = new TreeItem({"grandChild2"});
 
   treeModel->addTreeItem(root, parent1);
   treeModel->addTreeItem(root, parent2);
   treeModel->addTreeItem(parent1, child1);
   treeModel->addTreeItem(parent1, child2);
+  treeModel->addTreeItem(parent1, child3);
+  treeModel->addTreeItem(child1, grandChild1);
+  treeModel->addTreeItem(child1, grandChild2);
 
   QQmlApplicationEngine engine;
   engine.rootContext()->setContextProperty("_treemodel", treeModel);
