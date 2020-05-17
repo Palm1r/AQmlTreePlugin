@@ -3,6 +3,5 @@
         <file>main.qml</file>
         <file>Empty.qml</file>
         <file>ItemView.qml</file>
-        <file>TreeItemsList.qml</file>
     </qresource>
 </RCC>

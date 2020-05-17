@@ -21,11 +21,13 @@ Item {
                 spacing: 5
 
                 Rectangle {
-                    id: item2
+                    QtObject {
+                        id: _d
 
-                    property var currentIndex2: _treemodel.index(index, 0, parentIndex)
-                    property var currentData2: _treemodel.data(currentIndex2)
-                    property var itemChildCount2: _treemodel.rowCount(currentIndex2)
+                        property var currentIndex: _treemodel.index(index, 0, parentIndex)
+                        property var currentData: _treemodel.data(currentIndex)
+                        property var itemChildCount: _treemodel.rowCount(currentIndex)
+                    }
 
                     width: childrenRect.width
                     height: childrenRect.height
@@ -36,11 +38,11 @@ Item {
                         spacing: 10
 
                         Text {
-                            text: item2.currentData2
+                            text:  _d.currentData
                         }
 
                         Text {
-                            text: item2.itemChildCount2
+                            text: _d.itemChildCount
                         }
                     }
                 }
@@ -48,8 +50,8 @@ Item {
                 Loader {
                     source: "ItemView.qml"
                     onLoaded: {
-                        item.parentIndex = item2.currentIndex2
-                        item.childCount = item2.itemChildCount2
+                        item.parentIndex = _d.currentIndex
+                        item.childCount = _d.itemChildCount
                     }
                 }
             }
