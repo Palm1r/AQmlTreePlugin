@@ -1,4 +1,5 @@
 import QtQuick 2.14
+import QtQuick.Controls 2.14
 
 Item {
     id: root
@@ -23,6 +24,7 @@ Item {
         anchors.fill: parent
         spacing: 10
         boundsBehavior: Flickable.StopAtBounds
+        ScrollBar.vertical: ScrollBar {}
 
         model: listItemModel
         delegate: Column {

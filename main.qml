@@ -1,5 +1,6 @@
 import QtQuick 2.14
 import QtQuick.Window 2.14
+import QtQuick.Controls 2.14
 import "./"
 
 Window {
@@ -30,6 +31,7 @@ Window {
                 contentHeight: tree.height
                 contentWidth: parent.width
                 boundsBehavior: Flickable.StopAtBounds
+                ScrollBar.vertical: ScrollBar {}
 
                 TreeItem {
                     id: tree
