@@ -1,4 +1,5 @@
 import QtQuick 2.14
+import QtQuick.Layouts 1.14
 
 Item {
     id: root
@@ -7,10 +8,11 @@ Item {
     property var childCount
     property int itemLeftPadding: 30
 
-    width: childrenRect.width
-    height: childrenRect.height
+    implicitWidth: parent.width
+    implicitHeight: childrenRect.height
 
-    Column {
+    ColumnLayout {
+        width: parent.width
         spacing: 10
 
         Repeater {
@@ -19,8 +21,10 @@ Item {
             delegate: Column {
                 id: itemColumn
 
+                Layout.fillWidth: true
+
                 spacing: 10
-                leftPadding: itemLeftPadding
+                Layout.leftMargin: itemLeftPadding
 
                 QtObject {
                     id: _d
@@ -33,6 +37,7 @@ Item {
 
                 Row {
                     spacing: 10
+                    width: parent.width
 
                     MouseArea {
                         anchors.verticalCenter: parent.verticalCenter
@@ -70,9 +75,24 @@ Item {
                         color: "#3c85b5"
                         font.pixelSize: 20
                     }
+
+                }
+
+                Rectangle {
+                    anchors{
+                        left: parent.left
+                        leftMargin: -100
+                        right: parent.right
+                    }
+
+                    height: 1
+                    color: "gray"
+                    opacity: 0.5
                 }
 
                 Loader {
+                    width: parent.width
+
                     visible: _d.isOpen
                     source: "TreeView.qml"
                     onLoaded: {
