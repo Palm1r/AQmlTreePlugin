@@ -34,14 +34,26 @@ Item {
                 Row {
                     spacing: 10
 
-                    Rectangle {
-                        width: 20
-                        height: 20
-                        color: _d.itemChildCount > 0 ? _d.isOpen ? "red" : "blue" : "transparent"
+                    MouseArea {
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: 15
+                        height: 15
+                        onClicked: _d.isOpen = !_d.isOpen
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: _d.isOpen = !_d.isOpen
+                        Rectangle {
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: 15
+                            height: 3
+                            color: "#3c85b5"
+                            opacity: _d.itemChildCount > 0 ? 1.0 : 0.0
+
+                            Rectangle {
+                                anchors.centerIn: parent
+                                width: 3
+                                height: 15
+                                color: "#3c85b5"
+                                visible: !_d.isOpen
+                            }
                         }
                     }
 
@@ -56,12 +68,13 @@ Item {
                         anchors.verticalCenter: parent.verticalCenter
                         text:  _d.currentData
                         color: "#3c85b5"
+                        font.pixelSize: 20
                     }
                 }
 
                 Loader {
                     visible: _d.isOpen
-                    source: "ItemView.qml"
+                    source: "TreeView.qml"
                     onLoaded: {
                         item.parentIndex = _d.currentIndex
                         item.childCount = _d.itemChildCount

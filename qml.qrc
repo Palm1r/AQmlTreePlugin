@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Empty.qml</file>
-        <file>ItemView.qml</file>
+        <file>TreeView.qml</file>
     </qresource>
 </RCC>

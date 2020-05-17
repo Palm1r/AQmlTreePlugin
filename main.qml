@@ -8,8 +8,9 @@ Window {
     height: 480
     title: qsTr("TreeView example")
 
-    ItemView {
+    TreeView {
         anchors.fill: parent
+        anchors.leftMargin: 5
         parentIndex: _treemodel.rootIndex()
         childCount: _treemodel.rowCount(parentIndex)
         itemLeftPadding: 0
