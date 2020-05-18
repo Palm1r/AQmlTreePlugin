@@ -67,8 +67,6 @@ Window {
                     topMargin: 5
                 }
 
-                parentIndex: _treemodel.rootIndex()
-                childCount: _treemodel.rowCount(parentIndex)
                 itemLeftPadding: 0
             }
         }

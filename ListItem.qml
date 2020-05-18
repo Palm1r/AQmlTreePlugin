@@ -4,13 +4,11 @@ import QtQuick.Controls 2.14
 Item {
     id: root
 
-    property var parentIndex
-    property var childCount
     property int itemLeftPadding: 30
 
     anchors.fill: parent
 
-    onParentIndexChanged: {
+    Component.onCompleted: {
         fillData()
     }
 
