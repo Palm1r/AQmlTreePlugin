@@ -18,13 +18,13 @@ Item {
         Repeater {
             model: childCount
 
-            delegate: Column {
+            delegate: ColumnLayout {
                 id: itemColumn
 
                 Layout.fillWidth: true
+                Layout.leftMargin: itemLeftPadding
 
                 spacing: 10
-                Layout.leftMargin: itemLeftPadding
 
                 QtObject {
                     id: _d
@@ -69,11 +69,8 @@ Item {
                 }
 
                 Rectangle {
-                    anchors{
-                        left: parent.left
-                        leftMargin: -100
-                        right: parent.right
-                    }
+                    Layout.fillWidth: true
+                    Layout.leftMargin:  -100
 
                     height: 1
                     color: "gray"

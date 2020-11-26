@@ -16,6 +16,8 @@ Window {
         spacing: -1
 
         Rectangle {
+            id: treePart
+
             width: parent.width / 2
             height: parent.height
             border {
@@ -51,6 +53,8 @@ Window {
         }
 
         Rectangle {
+            id: listPart
+
             width: parent.width / 2
             height: parent.height
             border {
