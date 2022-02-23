@@ -1,4 +1,4 @@
-#include "tree_model.h"
+﻿#include "tree_model.h"
 
 TreeModel::TreeModel(QObject *parent) : QAbstractItemModel(parent) {
   _rootItem = std::make_shared<TreeItem>(QVariantList{});
@@ -54,8 +54,8 @@ void TreeModel::addTreeItem(TreeItem *parent, TreeItem *child) {
     endRemoveRows();
   }
 
-  beginInsertRows(QModelIndex(), parent->childCount() - 1,
-                  parent->childCount() - 1);
+  beginInsertRows(QModelIndex(), parent->childCount() > 0 ? parent->childCount() - 1:  0,
+                  parent->childCount() > 0 ? parent->childCount() - 1:  0);
   child->setParentItem(parent);
   parent->appendChild(child);
   endInsertRows();
