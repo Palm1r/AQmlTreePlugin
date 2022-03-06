@@ -21,6 +21,8 @@ Item {
             delegate: ColumnLayout {
                 id: itemColumn
 
+                property bool isSelected: false
+
                 Layout.fillWidth: true
                 Layout.leftMargin: itemLeftPadding
 
@@ -65,7 +67,6 @@ Item {
                     ModelItem {
                         content: _d.currentData
                     }
-
                 }
 
                 Rectangle {

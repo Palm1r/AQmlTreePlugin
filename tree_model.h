@@ -1,28 +1,32 @@
 #pragma once
 
-#include <QAbstractItemModel>
 #include <memory>
+#include <QAbstractItemModel>
 
 #include "tree_item.h"
+#include <QtQml/qqml.h>
 
-class TreeModel : public QAbstractItemModel {
-  Q_OBJECT
- public:
-  explicit TreeModel(QObject *parent = nullptr);
+class TreeModel : public QAbstractItemModel
+{
+    Q_OBJECT
+    QML_ELEMENT
+public:
+    explicit TreeModel(QObject *parent = nullptr);
+    ~TreeModel();
 
-  int rowCount(const QModelIndex &index) const override;
-  int columnCount(const QModelIndex &) const override;
-  QModelIndex index(const int row, const int column,
-                    const QModelIndex &parent) const override;
-  QModelIndex parent(const QModelIndex &childIndex) const override;
-  QVariant data(const QModelIndex &index, const int role = 0) const override;
+    int rowCount(const QModelIndex &index) const override;
+    int columnCount(const QModelIndex &) const override;
+    QModelIndex index(const int row, const int column, const QModelIndex &parent) const override;
+    QModelIndex parent(const QModelIndex &childIndex) const override;
+    QVariant data(const QModelIndex &index, const int role = 0) const override;
 
-  void addTreeItem(TreeItem *parent, TreeItem *child);
+    Q_INVOKABLE TreeItem::ItemPtr addTreeItem(TreeItem::ItemPtr parent, QVariant data);
+    Q_INVOKABLE void removeItemByIndex(TreeItem::ItemPtr parent, int index);
 
-  std::shared_ptr<TreeItem> rootItem() const;
+    Q_INVOKABLE TreeItem::ItemPtr rootItem() const;
 
-  Q_INVOKABLE QModelIndex rootIndex();
+    Q_INVOKABLE QModelIndex rootIndex();
 
- private:
-  std::shared_ptr<TreeItem> _rootItem;
+private:
+    TreeItem::ItemPtr _rootItem;
 };

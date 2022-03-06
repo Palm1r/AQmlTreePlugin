@@ -1,6 +1,7 @@
 import QtQuick 2.14
 import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
+import Palm1r.treeviewProjects.RootController 1.0
 import "./"
 
 Window {
@@ -11,9 +12,45 @@ Window {
     height: 480
     title: qsTr("TreeView and ListView example")
 
+    property var _treemodel: RootController.treeModel
+
     Row {
-        anchors.fill: parent
+        id: buttonRow
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: parent.width
+        height: 60
+
+        Button {
+            width: parent.width / 2
+            height: 40
+            text: "Add item"
+            font.pixelSize: 16
+
+            onClicked: {
+                var child = RootController.addItem("Child")
+            }
+        }
+
+        Button {
+            width: parent.width / 2
+            height: 40
+            text: "[WIP]//Remove item"
+            font.pixelSize: 16
+            opacity: 0.5
+            enabled: false
+        }
+    }
+
+    Row {
+        id: views
+
+        anchors {
+            top: buttonRow.bottom
+            bottom: parent.bottom
+        }
         spacing: -1
+        width: parent.width
 
         Rectangle {
             id: treePart

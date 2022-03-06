@@ -20,7 +20,10 @@ add_executable(QmlTreeViewExample
     tree_model.h
     tree_model.cpp
     tree_item.h
-    tree_item.cpp)
+    tree_item.cpp
+    rootcontroller.h
+    rootcontroller.cpp
+    )
 
 target_compile_definitions(QmlTreeViewExample
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)

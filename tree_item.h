@@ -1,26 +1,33 @@
 #pragma once
 
-#include <QObject>
-#include <QVariant>
+#include "QVariant"
+#include <memory>
+#include <vector>
 
-class TreeItem {
- public:
-  explicit TreeItem(const QVariant &data, TreeItem *parent = nullptr);
+class TreeItem : public std::enable_shared_from_this<TreeItem>
+{
+public:
+    using ItemWeekPtr = std::weak_ptr<TreeItem>;
+    using ItemPtr = std::shared_ptr<TreeItem>;
 
-  ~TreeItem();
+    explicit TreeItem(ItemWeekPtr parent = ItemWeekPtr(), const QVariant &data = QVariant());
+    ~TreeItem();
 
-  void appendChild(TreeItem *item);
-  void removeChild(TreeItem *item);
+    int index() const;
+    int childCount() const;
 
-  TreeItem *child(int row);
-  int childCount() const;
-  QVariant data() const;
-  int row() const;
-  TreeItem *parentItem();
-  void setParentItem(TreeItem *parentItem);
+    ItemPtr parent();
+    ItemPtr child(int index);
 
- private:
-  QList<TreeItem *> _childItems;
-  QVariant _itemData;
-  TreeItem *_parentItem;
+    int childIndexByItem(const std::shared_ptr<const TreeItem> &item) const;
+
+    ItemPtr appendChild(const QVariant &data);
+    void removeChild(int childIndex);
+
+    QVariant data() const;
+
+private:
+    ItemWeekPtr m_parent;
+    QVariant m_data;
+    std::vector<ItemPtr> m_childItems;
 };
