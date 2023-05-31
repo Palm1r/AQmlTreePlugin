@@ -1,6 +1,8 @@
-# QmlTreeViewExample
+# Another QML Tree Plugin
 
 Requirements:
-Qt 5.14 > (but if you want use early version, change imports in qml files)
+For last versions only Qt6.x
+
+Reworked into QML plugin for easy add to projects and added test
 
 ![Image alt](https://github.com/ArtifeksNN/QmlTreeViewExample/blob/master/TreeListViewExample.png)
