@@ -1,4 +1,4 @@
-name: CMake
+name: build_release_master
 
 on:
   push:
@@ -36,5 +36,5 @@ jobs:
 
     - name: Test
       working-directory: ${{github.workspace}}/build
-      run: ctest -C -v ${{env.BUILD_TYPE}}
+      run: ctest -C -V ${{env.BUILD_TYPE}}
 
