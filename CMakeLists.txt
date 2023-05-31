@@ -43,7 +43,7 @@ find_package(Qt6 COMPONENTS Test REQUIRED)
 set(TEST_SOURCES
     tst_treemodeltest.cpp
 )
-
+enable_testing()
 add_executable(tests ${TEST_SOURCES})
 target_link_libraries(tests PRIVATE Qt6::Test aqmltreepluginplugin)
 add_test(NAME test COMMAND tests)
