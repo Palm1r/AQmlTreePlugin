@@ -1,8 +1,16 @@
-#pragma once
+
+#ifndef TREEITEM_H
+#define TREEITEM_H
 
 #include "QVariant"
 #include <memory>
 #include <vector>
+
+class TreeItemData
+{
+    bool isSelected;
+    bool isOpened;
+};
 
 class TreeItem : public std::enable_shared_from_this<TreeItem>
 {
@@ -11,7 +19,7 @@ public:
     using ItemPtr = std::shared_ptr<TreeItem>;
 
     explicit TreeItem(ItemWeekPtr parent = ItemWeekPtr(), const QVariant &data = QVariant());
-    ~TreeItem();
+    virtual ~TreeItem() = default;
 
     int index() const;
     int childCount() const;
@@ -31,3 +39,4 @@ private:
     QVariant m_data;
     std::vector<ItemPtr> m_childItems;
 };
+#endif // TREEITEM_H

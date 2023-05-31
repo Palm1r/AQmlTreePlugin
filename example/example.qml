@@ -1,7 +1,8 @@
-import QtQuick 2.14
-import QtQuick.Window 2.14
-import QtQuick.Controls 2.14
-import Palm1r.treeviewProjects.RootController 1.0
+import QtQuick
+import QtQuick.Window
+import QtQuick.Controls
+import Palm1r.treeviewProjects.RootController
+import aqmltreeplugin
 import "./"
 
 Window {

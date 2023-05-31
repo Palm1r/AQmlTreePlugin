@@ -1,7 +1,8 @@
+
 #ifndef ROOTCONTROLLER_H
 #define ROOTCONTROLLER_H
 
-#include "tree_model.h"
+#include "treemodel.h"
 #include <QObject>
 
 class RootController : public QObject

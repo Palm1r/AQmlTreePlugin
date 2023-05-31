@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>TreeItem.qml</file>
-        <file>ListItem.qml</file>
-        <file>ModelItem.qml</file>
-    </qresource>
-</RCC>

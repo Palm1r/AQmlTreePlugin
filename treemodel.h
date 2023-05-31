@@ -1,9 +1,11 @@
-#pragma once
 
-#include <memory>
+#ifndef TREEMODEL_H
+#define TREEMODEL_H
+
+#include "treeitem.h"
+
 #include <QAbstractItemModel>
 
-#include "tree_item.h"
 #include <QtQml/qqml.h>
 
 class TreeModel : public QAbstractItemModel
@@ -12,7 +14,7 @@ class TreeModel : public QAbstractItemModel
     QML_ELEMENT
 public:
     explicit TreeModel(QObject *parent = nullptr);
-    ~TreeModel();
+    ~TreeModel() override = default;
 
     int rowCount(const QModelIndex &index) const override;
     int columnCount(const QModelIndex &) const override;
@@ -21,12 +23,14 @@ public:
     QVariant data(const QModelIndex &index, const int role = 0) const override;
 
     Q_INVOKABLE TreeItem::ItemPtr addTreeItem(TreeItem::ItemPtr parent, QVariant data);
+    Q_INVOKABLE TreeItem::ItemPtr addTreeItem(const QModelIndex &parentIndex, const QVariant &data);
     Q_INVOKABLE void removeItemByIndex(TreeItem::ItemPtr parent, int index);
-
+    Q_INVOKABLE void removeItemByIndex(const QModelIndex &index);
     Q_INVOKABLE TreeItem::ItemPtr rootItem() const;
-
     Q_INVOKABLE QModelIndex rootIndex();
 
 private:
-    TreeItem::ItemPtr _rootItem;
+    TreeItem::ItemPtr m_rootItem;
 };
+
+#endif // TREEMODEL_H

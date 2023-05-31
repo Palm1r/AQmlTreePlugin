@@ -1,9 +1,11 @@
-import QtQuick 2.14
+import QtQuick
 
 Row {
     id: root
 
     property alias content: contentData.text
+
+    signal selected
 
     spacing: 10
 
@@ -12,6 +14,11 @@ Row {
         width: 20
         height: 20
         color: "#3c85b5"
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: root.selected()
+        }
     }
 
     Text {

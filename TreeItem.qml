@@ -1,5 +1,5 @@
-import QtQuick 2.14
-import QtQuick.Layouts 1.14
+import QtQuick
+import QtQuick.Layouts
 
 Item {
     id: root
@@ -35,6 +35,7 @@ Item {
                     property var currentData: _treemodel.data(currentIndex)
                     property var itemChildCount: _treemodel.rowCount(currentIndex)
                     property bool isOpen: false
+                    property bool isSelected: false
                 }
 
                 Row {
@@ -51,7 +52,7 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             width: 15
                             height: 3
-                            color: "#3c85b5"
+                            color: _d.isSelected ? "red" : "#3c85b5"
                             opacity: _d.itemChildCount > 0 ? 1.0 : 0.0
 
                             Rectangle {
@@ -66,7 +67,9 @@ Item {
 
                     ModelItem {
                         content: _d.currentData
+                        onSelected: _treemodel.removeItemByIndex(_treemodel.index(index, 0, parentIndex)) //_d.isSelected = !_d.isSelected
                     }
+
                 }
 
                 Rectangle {

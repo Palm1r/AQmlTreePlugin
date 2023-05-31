@@ -1,6 +1,5 @@
-#include "tree_item.h"
 
-#include <QDebug>
+#include "treeitem.h"
 
 TreeItem::TreeItem(ItemWeekPtr parent, const QVariant &data)
     : m_parent(parent)
@@ -8,8 +7,6 @@ TreeItem::TreeItem(ItemWeekPtr parent, const QVariant &data)
 {
     m_childItems.reserve(4);
 }
-
-TreeItem::~TreeItem() {}
 
 TreeItem::ItemPtr TreeItem::parent()
 {
