@@ -1,0 +1,28 @@
+name: Build and Test Qt6 Plugin
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Qt
+      uses: WillBrennan/yaqti
+      with:
+        version: '6.5.0'
+        host: 'linux'
+        target: 'desktop'
+
+    - name: Prepare environment
+      run: |
+        echo "QTDIR=/usr/share/qt6" >> $GITHUB_ENV
+        echo "PATH=$PATH:/usr/lib/qt6/bin" >> $GITHUB_ENV
