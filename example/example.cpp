@@ -1,4 +1,5 @@
-#include <rootcontroller.h>
+#include "rootcontroller.h"
+
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml/qqmlextensionplugin.h>

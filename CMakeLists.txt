@@ -18,8 +18,10 @@ qt_add_qml_module(aqmltreeplugin
     ModelItem.qml
 
     SOURCES
-    treeitem.h treeitem.cpp
-    treemodel.h treemodel.cpp
+    sources/treeitem.h
+    sources/treeitem.cpp
+    sources/treemodel.h
+    sources/treemodel.cpp
 )
 
 set_target_properties(aqmltreeplugin PROPERTIES
@@ -35,17 +37,18 @@ target_compile_definitions(aqmltreeplugin
 target_link_libraries(aqmltreeplugin
     PRIVATE Qt6::Quick)
 
-target_include_directories(aqmltreeplugin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(aqmltreeplugin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/sources)
 
 # Test
 find_package(Qt6 COMPONENTS Test REQUIRED)
 
 set(TEST_SOURCES
-    tst_treemodeltest.cpp
+    tests/tst_treemodeltest.cpp
 )
 enable_testing()
 add_executable(tests ${TEST_SOURCES})
 target_link_libraries(tests PRIVATE Qt6::Test aqmltreepluginplugin)
+target_include_directories(tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/sources)
 add_test(NAME test COMMAND tests)
 
 # Example Project
@@ -54,7 +57,8 @@ qt_add_qml_module(ExampleProject
     URI ExampleProjectApp
     VERSION 1.0
     QML_FILES example/example.qml
-    SOURCES rootcontroller.h rootcontroller.cpp
+    SOURCES example/rootcontroller.h example/rootcontroller.cpp
 )
 target_link_libraries(ExampleProject PRIVATE Qt6::Quick aqmltreepluginplugin)
+target_include_directories(ExampleProject PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/sources)
 target_compile_definitions(ExampleProject PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
